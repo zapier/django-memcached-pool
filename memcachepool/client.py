@@ -52,7 +52,7 @@ class Client(object):
             delay = self.reconnect_delay
             while retries < self.max_connect_retries:
                 try:
-                    self._client.connect()
+                    return self._client.connect()
                 except socket.error, exc:
                     if exc.errno == EISCONN:
                         return   # we're good
