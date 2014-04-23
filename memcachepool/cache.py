@@ -60,7 +60,10 @@ class UMemcacheCache(MemcachedCache):
         return pickle.dumps(data, pickle.HIGHEST_PROTOCOL)
 
     def unserialize(self, data):
-        return pickle.loads(data)
+        try:
+            return pickle.loads(data)
+        except pickle.UnpicklingError:
+            return data
 
     def _get_memcache_timeout(self, timeout):
         if timeout == 0:
