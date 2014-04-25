@@ -28,15 +28,16 @@ class UMemcacheCache(MemcachedCache):
         kls.__init__(server, params, library=client,
                      value_not_found_exception=ValueError)
         # see how to pass the pool value
-        self.maxsize = int(params.get('MAX_POOL_SIZE', 35))
-        self.blacklist_time = int(params.get('BLACKLIST_TIME', 60))
-        self.socktimeout = int(params.get('SOCKET_TIMEOUT', 4))
-        self.max_item_size = long(params.get('MAX_ITEM_SIZE',
+        options = params.get('OPTIONS', {})
+        self.maxsize = int(options.get('MAX_POOL_SIZE', 35))
+        self.blacklist_time = int(options.get('BLACKLIST_TIME', 60))
+        self.socktimeout = int(options.get('SOCKET_TIMEOUT', 4))
+        self.max_item_size = long(options.get('MAX_ITEM_SIZE',
                                              DEFAULT_ITEM_SIZE))
         self._pool = ClientPool(self._get_client, maxsize=self.maxsize,
                                 wait_for_connection=self.socktimeout)
         self._blacklist = {}
-        self.retries = int(params.get('MAX_RETRIES', 3))
+        self.retries = int(options.get('MAX_RETRIES', 3))
         self._pick_index = 0
 
     def call(self, func, *args, **kwargs):
