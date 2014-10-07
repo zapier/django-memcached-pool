@@ -69,7 +69,7 @@ class TestCache(TestCase):
 
         # creating the cache class with two backends (one is off)
         params = {'SOCKET_TIMEOUT': 1, 'BLACKLIST_TIME': 1}
-        cache = UMemcacheCache('127.0.0.1:11214;127.0.0.2:11213', params)
+        cache = UMemcacheCache('127.0.0.1:11213;127.0.0.1:11214', params)
 
         # the load balancer should blacklist both IPs.
         # and return an error

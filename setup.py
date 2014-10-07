@@ -10,8 +10,8 @@ with open(os.path.join(here, 'CHANGES.rst')) as f:
     CHANGES = f.read()
 
 
-requires = ['Django', 'umemcache']
-test_requires = ['nose']
+requires = ['Django', 'pymemcache', 'umemcache']
+test_requires = ['nose', 'tox']
 
 
 setup(name='django-memcached-pool',
@@ -25,9 +25,9 @@ setup(name='django-memcached-pool',
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
         "License :: OSI Approved :: Apache Software License",
         ],
-      author='Mozilla Services',
-      author_email='services-dev@mozilla.org',
-      url='https://github.com/mozilla/django-memcached-pool',
+      author='Zapier',
+      author_email='james@zapier.com',
+      url='https://github.com/zapier/django-memcached-pool',
       keywords='django memcached pool',
       packages=find_packages(),
       zip_safe=False,

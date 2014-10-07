@@ -1,0 +1,16 @@
+language: python
+
+services:
+  - memcached
+
+install: "pip install umemcache pymemcache Django"
+
+python:
+  - 2.6
+  - 2.7
+  - 3.3
+  - pypy
+
+script:
+  - python setup.py nosetests
+  - PYTHONPATH=. 

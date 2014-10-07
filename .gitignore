@@ -1,0 +1,11 @@
+memcachepool/__init__.pyc
+memcachepool/cache.pyc
+memcachepool/client.pyc
+memcachepool/pool.pyc
+memcachepool/tests/__init__.pyc
+memcachepool/tests/settings.pyc
+memcachepool/tests/test_cache.pyc
+dist
+build
+django_memcached_pool.egg-info
+.tox
